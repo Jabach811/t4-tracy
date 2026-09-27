@@ -1,0 +1,245 @@
+{
+  "business": {
+    "name": "T4 Tracy",
+    "tagline": "Tea For You",
+    "address": "110 W 10th St, Tracy, CA 95376",
+    "phone": "(209) 637-9138",
+    "email": "t4tracymilktea@gmail.com",
+    "established": "February 2016",
+    "brandFounded": "Taiwan, 2004",
+    "hours": [
+      { "days": "Monday – Thursday", "open": "11:00 AM", "close": "8:00 PM" },
+      { "days": "Friday – Sunday", "open": "11:00 AM", "close": "9:00 PM" }
+    ],
+    "links": {
+      "facebook": "https://www.facebook.com/T4.TracyCA/",
+      "orderOnline": "https://t4-tracy-lv-tracy.cloveronline.com/menu/all",
+      "doordash": "https://order.online/store/t4-tracy-242118/",
+      "maps": "https://maps.google.com/maps?z=16&q=110+w+10th+street,+tracy+ca+95376"
+    },
+    "priceDisclaimer": "All menu item prices are subject to change without notice."
+  },
+
+  "drinks": {
+    "customization": {
+      "sweetness": ["Regular", "80%", "Half", "30%", "Zero"],
+      "iceLevel": ["Regular", "80%", "30%", "Zero"],
+      "dairyAlternatives": {
+        "options": ["Soy Milk", "Almond Milk", "Oat Milk", "Coconut Milk"],
+        "upcharge": 0.70
+      },
+      "notes": [
+        "Any drink can be made HOT or BLENDED.",
+        "Request our 'Special Base' for a caffeine-free alternative."
+      ]
+    },
+    "toppings": {
+      "upcharge": 0.70,
+      "items": [
+        "Pearl / Mini Pearl", "Lychee Jelly", "Rainbow Jelly", "Aloe Vera", "Coffee Jelly",
+        "White Pearl", "Grass Jelly", "Egg Pudding", "Coconut Jelly", "Red Bean",
+        "Honeydew Pop", "Mango Pop", "Kiwi Pop", "Strawberry Pop", "Basil Seeds"
+      ]
+    },
+    "upgrades": [
+      {
+        "name": "Topped Cream",
+        "price": 1.00,
+        "options": ["Sea Salt Topped Cream", "Cream Cheese Topped Cream", "Coconut Topped Cream"]
+      },
+      {
+        "name": "Ice Cream",
+        "price": 1.00,
+        "options": ["Mango Ice Cream", "Vanilla Ice Cream", "Strawberry Ice Cream"]
+      }
+    ],
+    "categories": [
+      {
+        "name": "Classic Milk Teas",
+        "price": 5.20,
+        "items": [
+          "Earl Grey Milk Tea", "Jasmine Milk Tea", "Roasted Oolong Milk Tea", "Thai Milk Tea"
+        ],
+        "extras": [{ "name": "Brown Sugar Latte with Pearl", "price": 5.90 }]
+      },
+      {
+        "name": "Signature Milk Teas",
+        "price": 5.60,
+        "items": [
+          "Okinawa Milk Tea", "Classical Rose Milk Tea", "Caramel Milk Tea",
+          "Winter Melon Milk Tea", "Coconut Milk Tea", "Matcha with Fresh Milk",
+          "Ballet Chocolate", "Peppermint Milk Tea", "Royal Fresh Milk Tea",
+          "Honeydew Milk Tea"
+        ]
+      },
+      {
+        "name": "Special Milk Teas",
+        "price": 5.90,
+        "items": [
+          "Pearl Milk Tea", "Milk Tea with Pearl/Coffee Jelly", "French Pudding Milk Tea",
+          "Snow Globe Milk Tea", "Red Bean Milk Tea", "Grass Jelly Milk Tea",
+          "Oreo Potted Milk Tea", "Matcha Strawberry Fresh Milk", "Taro Pearl Milk Tea"
+        ]
+      },
+      {
+        "name": "Fruit Teas",
+        "price": 5.60,
+        "items": [
+          "Lychee (Black / Green) Tea", "Guava (Green / Royal) Tea", "Apple (Black / Royal) Tea",
+          "Green Tea with Mango Ice Cream", "Yogurt Green Tea", "Lemon Bomb Green Tea",
+          "Jadeite Lemon Royal Tea", "Elegant Lady Rose Tea", "Guava Strawberry Burst Tea",
+          "Dragon Strawberry Yogurt Tea", "Ruby Strawberry Lemon Tea", "Mango Pineapple Royal Tea",
+          "Mango Royal Tea", "Honey Peach Royal Tea", "Grape Fruit Royal Tea",
+          "Mango Strawberry Bliss Tea", "Apple Royal Tea", "Passion Fruit Royal Tea"
+        ]
+      },
+      {
+        "name": "Smoothies",
+        "price": 6.00,
+        "items": [
+          "Lemon Smoothie", "Piña Colada Smoothie", "Strawberry Smoothie",
+          "Guava Strawberry Smoothie", "Grape Fruit Lemonade Smoothie", "Guava Smoothie",
+          "Mango Strawberry Smoothie", "Strawberry Banana Smoothie", "Apple Smoothie",
+          "Honey Peach Smoothie", "Lychee Smoothie", "Mango Smoothie",
+          "Passion Fruit Smoothie", "Strawberry Lemonade Smoothie",
+          "Strawberry Vanilla Yogurt Smoothie"
+        ]
+      },
+      {
+        "name": "Milkshakes",
+        "price": 6.00,
+        "items": [
+          "Caramel Milkshake", "Oreo Milkshake", "Coconut Milkshake", "Thai Tea Milkshake",
+          "Strawberry Banana Milkshake", "Chocolate Milkshake", "Taro Milkshake",
+          "Strawberry Milkshake", "Vietnamese Coffee Milkshake", "Red Bean Milkshake",
+          "Passion Fruit Milkshake"
+        ],
+        "extras": [{ "name": "Avocado Milkshake", "price": 6.25 }]
+      },
+      {
+        "name": "Coffee",
+        "items": [{ "name": "Milk Vietnamese Coffee", "price": 6.00 }]
+      },
+      {
+        "name": "Special Beverages",
+        "price": 5.20,
+        "items": [
+          "Winter Melon", "Honey Aloe", "Winter Melon Lemon", "Honey Grass Jelly",
+          "Kumquat Lemon", "Kumquat with Basil Seeds", "Elegant Rose Aloe", "Honey Green Tea"
+        ]
+      },
+      {
+        "name": "Topped Cream",
+        "items": [
+          { "name": "Winter Melon Topped Cream", "price": 6.20 },
+          { "name": "Black Tea Topped Cream", "price": 5.50 },
+          { "name": "Mango Royal Tea Topped Cream", "price": 6.60 }
+        ]
+      }
+    ]
+  },
+
+  "food": {
+    "categories": [
+      {
+        "name": "Snacks & Appetizers",
+        "items": [
+          { "name": "Basil Popcorn Chicken", "price": 9.10 },
+          { "name": "Deep-Fried Calamari", "price": 9.10 },
+          { "name": "Cream Cheese Wontons", "price": 8.25, "count": 7 },
+          { "name": "Pot-Stickers (Chicken or Pork)", "price": 9.25, "count": 7 },
+          { "name": "Mozzarella Sticks", "price": 6.50, "count": 8 },
+          { "name": "Pork Egg Rolls", "price": 8.00, "count": 4 },
+          { "name": "Vegetable Egg Rolls", "price": 7.30, "count": 4 },
+          { "name": "Takoyaki", "price": 9.25, "count": 7 },
+          { "name": "Fried Oysters", "price": 9.00, "count": 7 },
+          { "name": "Fried Wontons", "price": 8.00, "count": 12 },
+          { "name": "Firecracker Shrimp", "price": 9.25, "count": 6 },
+          { "name": "Lobster Balls", "price": 8.25, "count": 8 },
+          { "name": "Butterfly Shrimp", "price": 9.00, "count": 7 },
+          { "name": "Corn Dogs", "price": 6.35, "count": 2 },
+          { "name": "Jalapeño Poppers", "price": 7.45, "count": 8 },
+          { "name": "Fried Tofu", "price": 7.75 },
+          { "name": "Banana Spring Rolls", "price": 7.45, "count": 6 },
+          { "name": "Fried Mini Octopus", "price": 9.10 }
+        ]
+      },
+      {
+        "name": "Fries",
+        "items": [
+          { "name": "French Fries", "price": 6.15 },
+          { "name": "Garlic Parmesan French Fries", "price": 7.20 },
+          { "name": "Takoyaki French Fries", "price": 7.30 },
+          { "name": "Sweet Potato Fries", "price": 7.20 },
+          { "name": "Curly Fries", "price": 6.65 },
+          { "name": "Onion Rings", "price": 6.50 }
+        ]
+      },
+      {
+        "name": "Chicken Nuggets",
+        "items": [
+          { "name": "7 Piece", "price": 3.60 },
+          { "name": "10 Piece", "price": 5.15 },
+          { "name": "15 Piece", "price": 7.75 },
+          { "name": "20 Piece", "price": 10.30 }
+        ]
+      },
+      {
+        "name": "Chicken Tenders",
+        "items": [
+          { "name": "3 Piece", "price": 4.80 },
+          { "name": "5 Piece", "price": 8.00 },
+          { "name": "7 Piece", "price": 11.20 },
+          { "name": "10 Piece", "price": 16.00 }
+        ],
+        "combo": {
+          "label": "Make It A Combo — add your choice of fries",
+          "options": [
+            { "name": "French Fries", "add": 4.75 },
+            { "name": "Garlic Parmesan Fries", "add": 5.75 },
+            { "name": "Curly Fries", "add": 5.25 },
+            { "name": "Sweet Potato Fries", "add": 5.75 }
+          ]
+        }
+      },
+      {
+        "name": "Chicken Wings",
+        "items": [
+          { "name": "7 Wings (1 flavor)", "price": 11.30 },
+          { "name": "10 Wings (2 flavors)", "price": 15.35 },
+          { "name": "15 Wings (2 flavors)", "price": 22.40 },
+          { "name": "20 Wings (3 flavors)", "price": 28.95 }
+        ],
+        "flavors": [
+          "Buffalo", "Lemon Pepper", "Garlic Parmesan", "Barbecue",
+          "Sweet Honey", "Sweet Teriyaki", "Mango Habanero", "Hot Honey"
+        ]
+      },
+      {
+        "name": "Soups",
+        "items": [
+          { "name": "Wonton Soup", "price": 11.15 },
+          { "name": "Wonton Noodle Soup", "price": 13.70 },
+          { "name": "Chicken Noodle Soup", "price": 14.40 }
+        ]
+      },
+      {
+        "name": "Rice Plates",
+        "items": [
+          { "name": "Orange Chicken Rice", "price": 13.40 },
+          { "name": "Curry Chicken Rice", "price": 13.40 },
+          { "name": "Honey Wings Rice", "price": 13.40 }
+        ]
+      },
+      {
+        "name": "Desserts",
+        "items": [
+          { "name": "Bamboo Waffle (Pandan)", "price": 6.90 },
+          { "name": "Bubble Waffle", "price": 6.90 },
+          { "name": "Sesame Balls", "price": 8.10, "count": 10 },
+          { "name": "Ice Cream Cup (2 scoops)", "price": 3.55, "note": "Choose between mango, strawberry & vanilla" }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#552344">
+  <title>T4 Tracy | Build a Drink</title>
+  <style>
+    :root {
+      --ink: #2c2030;
+      --plum: #552344;
+      --berry: #a91f57;
+      --berry-dark: #7d1743;
+      --cream: #fff9ed;
+      --muted: #8a7183;
+      --line: rgba(85, 35, 68, .15);
+      --stage-h: 38vh;
+      --bar-h: 4.25rem;
+    }
+    * { box-sizing: border-box; }
+    html { background: #f8eedb; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: linear-gradient(180deg, #fffdf7 0%, #f8eedb 100%);
+      -webkit-tap-highlight-color: transparent;
+    }
+    button { font: inherit; cursor: pointer; }
+    .skip-link { position: fixed; left: 1rem; top: -4rem; z-index: 40; background: var(--berry); color: #fff; padding: .7rem 1rem; border-radius: .6rem; }
+    .skip-link:focus { top: 1rem; }
+
+    .app { display: grid; grid-template-rows: auto auto 1fr; min-height: 100dvh; }
+
+    .topbar { display: flex; align-items: center; justify-content: space-between; padding: .75rem 1rem; }
+    .brand { color: var(--plum); text-decoration: none; font-weight: 900; letter-spacing: .08em; font-size: .9rem; }
+    .brand small { display: block; color: #9b7691; font-size: .55rem; letter-spacing: .17em; }
+    .back-link { color: var(--berry-dark); font-size: .8rem; font-weight: 800; }
+
+    .stage-wrap {
+      position: sticky; top: 0; z-index: 10;
+      height: var(--stage-h); min-height: 230px;
+      display: grid; grid-template-rows: 100%; place-items: center;
+      background: linear-gradient(180deg, #fffdf7 0%, rgba(255, 253, 247, .94) 88%, rgba(255, 253, 247, 0) 100%);
+    }
+    #cup-stage { height: 100%; width: auto; max-width: 100%; overflow: visible; filter: drop-shadow(0 14px 12px rgba(75, 33, 39, .16)); }
+
+    #choice-rows { min-width: 0; padding: .5rem 0 calc(var(--bar-h) + 1rem); }
+    .row { padding: .85rem 0 .35rem; }
+    .row-head { display: flex; align-items: baseline; gap: .6rem; padding: 0 1rem .5rem; }
+    .row-label { color: var(--plum); font-size: .82rem; font-weight: 900; letter-spacing: .05em; text-transform: uppercase; }
+    .row-note { color: var(--muted); font-size: .72rem; }
+    .strip {
+      display: flex; gap: .5rem; padding: .25rem 1rem .65rem;
+      overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none;
+    }
+    .strip::-webkit-scrollbar { display: none; }
+    .chip {
+      flex: 0 0 auto; min-height: 44px; padding: .55rem .9rem;
+      border: 1.5px solid #e2cfd3; border-radius: 999px;
+      background: #fffdf8; color: #694f61; font-size: .85rem; font-weight: 700; white-space: nowrap;
+      scroll-snap-align: start;
+      transition: background .15s, color .15s, border-color .15s, transform .15s;
+    }
+    .chip[aria-pressed="true"] { background: var(--berry); border-color: var(--berry); color: #fff; }
+    .chip:disabled { opacity: .4; cursor: not-allowed; }
+    .chip:active { transform: scale(.96); }
+    .chip:focus-visible, .menu-card:focus-visible, .bar-button:focus-visible, .sheet button:focus-visible { outline: 3px solid #efc54d; outline-offset: 2px; }
+    .chip small { display: block; font-size: .66rem; font-weight: 600; opacity: .8; }
+
+    .menu-tabs { display: flex; gap: .4rem; padding: 0 1rem .5rem; overflow-x: auto; scrollbar-width: none; }
+    .menu-tabs .chip { min-height: 44px; padding: .35rem .75rem; font-size: .76rem; }
+    .menu-card {
+      flex: 0 0 7.25rem; display: grid; gap: .3rem; justify-items: center;
+      padding: .5rem .4rem .6rem; border: 1.5px solid #e2cfd3; border-radius: 1rem; background: #fffdf8;
+      color: var(--plum); font-size: .72rem; font-weight: 700; text-align: center; line-height: 1.2;
+    }
+    .menu-card img { width: 4.5rem; height: 4.5rem; object-fit: contain; }
+    .menu-card[aria-pressed="true"] { border-color: var(--berry); box-shadow: 0 0 0 2px var(--berry) inset; }
+    .menu-card span:last-child { color: var(--muted); font-weight: 600; }
+    [hidden] { display: none !important; }
+
+    #price-bar {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      height: var(--bar-h); padding: 0 1rem calc(env(safe-area-inset-bottom) / 2);
+      background: rgba(255, 253, 247, .96); border-top: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+    .price-block { display: grid; line-height: 1.1; }
+    .price-block small { color: var(--muted); font-size: .68rem; font-weight: 700; letter-spacing: .12em; }
+    #price-total { color: var(--plum); font-size: 1.45rem; font-weight: 900; letter-spacing: -.02em; }
+    .bar-button { min-height: 44px; padding: .6rem 1.2rem; border: 0; border-radius: 999px; background: var(--plum); color: #fff; font-weight: 800; }
+    .bar-button:hover { background: var(--berry-dark); }
+
+    /* Cup reactions */
+    .pour { animation: pour .45s cubic-bezier(.2, .8, .3, 1); transform-origin: 50% 100%; transform-box: fill-box; }
+    .drop { animation: drop .45s cubic-bezier(.3, 1.4, .5, 1); transform-box: fill-box; transform-origin: 50% 50%; }
+    .settle { animation: settle .45s cubic-bezier(.2, .8, .3, 1); transform-box: fill-box; }
+    .fade { animation: fade .35s ease; }
+    .liquid { transition: fill .45s ease; }
+    .steam path { animation: steam 2.4s ease-in-out infinite; }
+    .steam path:nth-child(2) { animation-delay: -.8s; }
+    .steam path:nth-child(3) { animation-delay: -1.5s; }
+    @keyframes pour { from { transform: scaleY(0); } }
+    @keyframes drop { from { transform: translateY(-160px) rotate(-14deg); opacity: 0; } }
+    @keyframes settle { from { transform: translateY(-40px); opacity: 0; } }
+    @keyframes fade { from { opacity: 0; } }
+    @keyframes steam { 50% { transform: translate(4px, -10px); opacity: .45; } }
+
+    /* Ticket sheet */
+    .sheet { position: fixed; inset: 0; z-index: 30; display: grid; align-items: end; background: rgba(44, 32, 48, .45); }
+    .sheet-card {
+      background: var(--cream); border-radius: 1.5rem 1.5rem 0 0; padding: 1.1rem 1.25rem calc(1.25rem + env(safe-area-inset-bottom));
+      max-height: 92dvh; overflow-y: auto; animation: sheet-up .3s cubic-bezier(.2, .8, .3, 1);
+    }
+    @keyframes sheet-up { from { transform: translateY(100%); } }
+    .sheet-head { display: flex; align-items: center; justify-content: space-between; }
+    .sheet-head h2 { margin: 0; color: var(--plum); font-size: 1.1rem; }
+    .sheet-close { min-width: 44px; min-height: 44px; border: 0; background: transparent; color: var(--plum); font-size: 1.4rem; }
+    #ticket-cup { display: block; height: 11rem; margin: .25rem auto .5rem; }
+    #ticket-line { margin: 0 0 .75rem; color: var(--plum); font-family: Georgia, "Times New Roman", serif; font-size: 1.2rem; line-height: 1.35; text-align: center; }
+    #ticket-breakdown { display: grid; gap: .3rem; margin: 0; padding: .75rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-size: .88rem; }
+    #ticket-breakdown div { display: flex; justify-content: space-between; }
+    #ticket-breakdown dd { margin: 0; }
+    #ticket-breakdown .total { font-weight: 900; color: var(--plum); font-size: 1.05rem; }
+    .sheet-actions { display: flex; gap: .6rem; margin-top: .9rem; }
+    .sheet-actions button { flex: 1; min-height: 46px; border-radius: 999px; font-weight: 800; }
+    #copy-ticket { border: 1.5px solid var(--plum); background: transparent; color: var(--plum); }
+    #save-ticket { border: 0; background: var(--plum); color: #fff; }
+    .sheet-note { margin: .8rem 0 0; color: var(--muted); font-size: .7rem; text-align: center; }
+
+    @media (min-width: 900px) {
+      .app { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: auto 1fr; max-width: 1200px; margin: 0 auto; }
+      .topbar { grid-column: 1 / -1; }
+      .stage-wrap { top: 1rem; height: min(70vh, 640px); align-self: start; }
+      #choice-rows { padding-bottom: calc(var(--bar-h) + 2rem); }
+      #price-bar { left: auto; right: max(0px, calc((100vw - 1200px) / 2)); width: min(600px, 50vw); border-radius: 1rem 0 0 0; border-left: 1px solid var(--line); }
+      .sheet { align-items: center; justify-items: center; }
+      .sheet-card { width: min(480px, 92vw); border-radius: 1.5rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#choice-rows">Skip to drink choices</a>
+  <div class="app">
+    <header class="topbar">
+      <a class="brand" href="index.html">T4 TRACY<small>BUILD A DRINK</small></a>
+      <a class="back-link" href="index.html">Menu</a>
+    </header>
+
+    <div class="stage-wrap">
+      <svg id="cup-stage" viewBox="0 0 300 400" role="img" aria-label="Your drink"></svg>
+    </div>
+
+    <main id="choice-rows" aria-label="Drink choices"></main>
+  </div>
+
+  <div id="price-bar">
+    <div class="price-block" aria-live="polite">
+      <small>YOUR CUP</small>
+      <span id="price-total">$5.20</span>
+    </div>
+    <button class="bar-button" type="button" id="open-ticket">Show my ticket</button>
+  </div>
+
+  <div id="ticket-sheet" class="sheet" role="dialog" aria-modal="true" aria-labelledby="ticket-title" hidden>
+    <div class="sheet-card">
+      <div class="sheet-head">
+        <h2 id="ticket-title">Your ticket</h2>
+        <button class="sheet-close" type="button" id="close-ticket" aria-label="Close ticket">&times;</button>
+      </div>
+      <svg id="ticket-cup" viewBox="0 0 300 400" aria-hidden="true"></svg>
+      <p id="ticket-line"></p>
+      <dl id="ticket-breakdown"></dl>
+      <div class="sheet-actions">
+        <button type="button" id="copy-ticket">Copy</button>
+        <button type="button" id="save-ticket">Save picture</button>
+      </div>
+      <p class="sheet-note" id="ticket-note"></p>
+    </div>
+  </div>
+
+  <script type="module" src="js/drink-builder.mjs"></script>
+</body>
+</html>

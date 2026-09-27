@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Food &amp; Snacks — T4 Tracy</title>
+<meta name="description" content="Popcorn chicken, wings in eight flavors, takoyaki, noodle soups, rice plates and bubble waffles at T4 Tracy, 110 W 10th St, Tracy CA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,400..800;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+
+<div class="awning"><div class="wrap">
+  <span data-open-status><b>Open today</b></span>
+  <span>110 W 10th St, Tracy</span>
+  <span>(209) 637-9138</span>
+</div></div>
+
+<nav><div class="wrap">
+  <a class="logo" href="index.html"><span class="mark">T4</span><span class="name">T4 Tracy</span></a>
+  <ul>
+    <li><a href="index.html">Drinks</a></li>
+    <li><a class="here" href="food.html">Food</a></li>
+    <li><a href="visit.html">Visit</a></li>
+  </ul>
+  <a class="btn sm" href="https://t4-tracy-lv-tracy.cloveronline.com/menu/all">Order pickup</a>
+</div></nav>
+
+<section class="board"><div class="wrap">
+  <div class="panel">
+    <div class="top">
+      <div>
+        <span class="eyebrow">Street food · Fried fresh to order</span>
+        <h1 class="display">Food &amp;<br><span class="t">Snacks.</span></h1>
+        <div class="subline"><p>Taiwanese street food and the fried stuff you actually crave — popcorn chicken, takoyaki, wings in eight flavors, and a bubble waffle to finish.</p></div>
+        <div class="cta">
+          <a class="btn" href="https://t4-tracy-lv-tracy.cloveronline.com/menu/all">Order for pickup</a>
+          <a class="btn alt" href="#menu">Jump to the menu</a>
+        </div>
+      </div>
+      <aside class="quickboard">
+        <h4>Good to know</h4>
+        <div class="qrow"><span>Snacks start at</span><b>3.60</b></div>
+        <div class="qrow"><span>Wing flavors</span><b>8</b></div>
+        <div class="qrow"><span>Soups &amp; rice plates</span><b>11.15+</b></div>
+        <div class="qrow"><span>Desserts from</span><b>3.55</b></div>
+        <p class="qnote">Tenders combo with any fries. Everything is made when you order it.</p>
+      </aside>
+    </div>
+  </div>
+</div></section>
+
+<div class="filters"><div class="wrap" id="food-filters"></div></div>
+
+<section class="menu" id="menu"><div class="wrap">
+  <div id="food-menu"></div>
+</div></section>
+
+<section class="darkband"><div class="wrap">
+  <h2>Thirsty<br><em>too?</em></h2>
+  <p class="sub">Seventy-five drinks on the other side of the counter — milk teas, fruit teas, smoothies and shakes, built to your sweetness.</p>
+  <p><a class="btn alt" href="index.html#menu">See the drink menu</a></p>
+</div></section>
+
+<footer>© 2026 T4 Tracy Tea · All menu prices subject to change without notice · <a href="https://www.facebook.com/T4.TracyCA/">Facebook</a></footer>
+
+<div class="orderbar"><div class="wrap">
+  <p>Skip the line<small>Order ahead and pick a time</small></p>
+  <a class="btn" href="https://t4-tracy-lv-tracy.cloveronline.com/menu/all">Order pickup</a>
+</div></div>
+
+<script src="data/menu.js"></script>
+<script src="js/site.js"></script>
+<script>
+const bar = document.getElementById("food-filters");
+const mount = document.getElementById("food-menu");
+renderFilterChips(T4.food, bar);
+renderCats(T4.food, mount);
+wireFilters(bar, mount);
+</script>
+</body>
+</html>
